@@ -9,65 +9,74 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!--ListView donde se mostrarán datos de un objeto clsPersona-->
         <ListView 
             SelectionMode="None"
+            RowHeight="80"
+            SeparatorColor="AliceBlue"
             x:Name="PersonasListView" 
-            ItemsSource="{Binding Personas}">
+            ItemsSource="{Binding personas}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        
+
                         <!--FlexLayout para poder poner al final los iconos y al principio el nombre-->
+                        <!--En la direccion pongo que sean celdas y distribuyo el espacio dejandolo entre ambas celdas para que quede estético-->
                         <FlexLayout
-                       Direction="Row"
+                            Direction="Row"
                             JustifyContent="SpaceBetween">
-                            <HorizontalStackLayout
-                                Padding="5"
-                                Spacing="7">
+                            <!--Un StackLayout para introducir la imagen, el nombre y los apellidos-->
+                            <HorizontalStackLayout>
                                 <Image
                                     Source="{Binding FotografiaSrc}"
+                                    
                                     ></Image>
-                                
-                                <Label Text="{Binding Nombre}" 
+
+                                <Label 
+                                   Text="{Binding Nombre}"
+                                   Margin="10,0,5,0"
+                                   FontSize="Subtitle"
                                    VerticalOptions="Center"></Label>
                                 <Label 
                                    Text="{Binding Apellidos}"
+                                   FontSize="Subtitle"
                                    VerticalOptions="Center"></Label>
 
 
                             </HorizontalStackLayout>
-                            <StackLayout
-                            Orientation="Horizontal"
-                            HorizontalOptions="End"
-                            VerticalOptions="Start"
-                            >
+                            <!--Un StackLayout Horizontal para introducir las dos imagenes en otra celda y posicionarlos al final.-->
+                            <HorizontalStackLayout>
                                 <ImageButton 
-                                Source="lapiz"  
-                                Scale="0.5"
-                                CornerRadius="12"
-                                BackgroundColor="AliceBlue"
+                                    HorizontalOptions="Center"
+                                    Source="lapiz"  
+                                    Scale="0.75"
+                                    CornerRadius="12"
+                                    BackgroundColor="AliceBlue"
                                 ></ImageButton>
                                 <ImageButton 
-                                Source="papelera"
-                                BackgroundColor="AliceBlue"
-                                CornerRadius="12"
-                                Scale="0.5"
+                                    Source="papelera"
+                                    BackgroundColor="AliceBlue"
+                                    CornerRadius="12" 
+                                    Scale="0.75"
                                 ></ImageButton>
-                            </StackLayout>
+                            </HorizontalStackLayout>
                         </FlexLayout>
                     </ViewCell>
 
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-        <ImageButton 
+
+        <!--Boton flotante sobre la lista de personas-->
+        <Button 
+            Margin="40"
+            Text=" + "
+            FontSize="Header"
             HorizontalOptions="End"
             VerticalOptions="End"
-            Margin="0,0,-190,-170"
-            Scale=".12"
+            CornerRadius="15"
             x:Name="btnNuevo"
-            Source="add"/>
+            BackgroundColor="MediumPurple"/>
 
     </Grid>
 </ContentPage>

@@ -13,11 +13,12 @@ public partial class MainPage : ContentPage
 		//Llamo a la lista de personas y se la mando al listView para que la muestre
 		ObservableCollection<clsPersona> personas = new ObservableCollection<clsPersona>();
 		var listadoPersonas = new listadoPersonas();
-		;
+		//Relleno el ObservableCollection con los datos de la lista de clsPersona
 		foreach(clsPersona persona in listadoPersonas.getListadoCompletoPersonas())
 		{
 			personas.Add(persona);
 		}
+		//Envio la ObservableCollection de clsPersona a la ListView 
 		PersonasListView.ItemsSource = personas;
 	}
 
